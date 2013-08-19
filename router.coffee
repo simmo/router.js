@@ -47,8 +47,7 @@ class Route
       param_values.push(match) unless typeof match is 'undefined' or match.substr(0, 1) is '/'
     
     # If the param key is a splat (+) then convert value to an array
-    for match, index in param_values
-      @params.push(if @param_keys[index].is_splat then match.split('/') else match)
+    @params.push(if @param_keys[index].is_splat then match.split('/') else match) for match, index in param_values
     
     # We have a match!
     return true
